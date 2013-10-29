@@ -54,7 +54,7 @@ nnoremap <CR> :nohlsearch<cr>
 map <C-t> <ESC>:tabnew<CR>
 map <C-h> <ESC>:tabprev<CR>
 map <C-l> <ESC>:tabnext<CR>
-map <C-w> <ESC>:tabclose<CR>
+"map <C-w> <ESC>:tabclose<CR>
 
 imap <C-h> <Left>
 imap <C-j> <Down>
