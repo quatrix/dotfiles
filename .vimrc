@@ -13,8 +13,8 @@ colorscheme wombat256mod
 "colorscheme grb256
 autocmd! bufwritepost .vimrc source %
 
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
+"vnoremap < <gv  " better indentation
+"vnoremap > >gv  " better indentation
 
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
