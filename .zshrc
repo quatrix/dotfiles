@@ -40,9 +40,10 @@ ZSH_THEME="skaro"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git virtualenv tmux knife)
+plugins=(git virtualenv tmux knife zsh-syntax-highlighting)
 
 export PATH=~/opt/bin:$PATH
+export NODE_PATH=/usr/local/lib/node_modules
 source ~/.pyenv/bin/activate
 export PYTHONPATH=.
 source $ZSH/oh-my-zsh.sh
