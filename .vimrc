@@ -1,24 +1,57 @@
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
+if has('vim_starting')
+  set nocompatible               " Be iMproved
 
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+"NeoBundle 'Shougo/neosnippet.vim'
+"NeoBundle 'Shougo/neosnippet-snippets'
+"NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/webapi-vim'
+
+
+" You can specify revision/branch/tag.
+"NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+
+filetype plugin indent on
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+
+set t_Co=256
+let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
+
+let g:neocomplcache_enable_at_startup = 1
+
+syntax on
+
 autocmd BufEnter * :lchdir %:p:h
 
 
-au InsertLeave * match ExtraWhitespace /\s\+$/
 
 set background=dark
-colorscheme wombat256mod
-"colorscheme grb256
-autocmd! bufwritepost .vimrc source %
+colorscheme wombat256
+"autocmd! bufwritepost .vimrc source %
 
 "vnoremap < <gv  " better indentation
 "vnoremap > >gv  " better indentation
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
 
 let mapleader=","
 
