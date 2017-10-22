@@ -1,102 +1,121 @@
-if has('vim_starting')
-  set nocompatible               " Be iMproved
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-call neobundle#rc(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-"NeoBundle 'Shougo/neosnippet.vim'
-"NeoBundle 'Shougo/neosnippet-snippets'
-"NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'mattn/webapi-vim'
-
-
-" You can specify revision/branch/tag.
-"NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
-
-filetype plugin indent on
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter.git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'lambdatoast/elm.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'sudar/vim-arduino-syntax'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'rakr/vim-one'
+Plugin 'mhinz/vim-grepper'
+Plugin 'rhysd/clever-f.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Shougo/deoplete.nvim'
 
 
-set t_Co=256
-let g:Powerline_symbols = 'fancy'
-set encoding=utf-8
+call vundle#end()
 
-let g:neocomplcache_enable_at_startup = 1
+
+let g:deoplete#enable_at_startup = 1
+
+
+
 
 syntax on
-
-autocmd BufEnter * :lchdir %:p:h
-
-
-
-set background=dark
-colorscheme wombat256
-"autocmd! bufwritepost .vimrc source %
-
-"vnoremap < <gv  " better indentation
-"vnoremap > >gv  " better indentation
-
-"python from powerline.vim import setup as powerline_setup
-"python powerline_setup()
-"python del powerline_setup
-
-let mapleader=","
-
-set ai
-set number
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-set cursorline
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
-set colorcolumn=80
-highlight ColorColumn ctermbg=233
 
-function! <SID>StripTrailingWhitespace()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
-nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
+set laststatus=2
+let g:bufferline_echo = 0
 
-" unselect
-nnoremap <CR> :nohlsearch<cr>
+let mapleader = "\<Space>"
+set noshowmode
 
-map <C-t> <ESC>:tabnew<CR>
-map <C-h> <ESC>:tabprev<CR>
-map <C-l> <ESC>:tabnext<CR>
-"map <C-w> <ESC>:tabclose<CR>
+nnoremap <Leader>f :Unite -ignorecase -buffer-name=files -start-insert file_rec<CR>
 
-imap <C-h> <Left>
-imap <C-j> <Down>
-imap <C-k> <Up>
-imap <C-l> <Right>
-imap <C-a> <C-o>^
-imap <C-e> <C-o>$
 
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
+" better splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <silent> vv <C-w>v
+nnoremap <silent> vs <C-w>s
+set splitbelow
+set splitright
+
+" upper case by mistake commands
+command WQ wq
+command Wq wq
+command W w
+command Q q
+
+" colors
+
+if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+if (has("termguicolors"))
+    set termguicolors
+endif
+
+
+set background=dark " for the dark version
+
+let g:one_allow_italics = 1
+let g:airline_theme='one'
+
+colorscheme one
+
+
+call one#highlight('Comment', '98c379', '', 'none')
+call one#highlight('Normal', 'abb2bf', '1e1e1e', 'none')
+
+set number
+
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
+
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype typescript setlocal ts=2 sts=2 sw=2
+
+" fzf
+set rtp+=/usr/local/opt/fzf
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+
+  let g:ackprg = 'ag --vimgrep'
+endif
