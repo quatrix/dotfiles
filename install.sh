@@ -5,6 +5,11 @@ brew install python3
 brew install tmux
 brew install neovim
 brew install zsh
+brew install nvm
+brew install ag
+
+# install terminfo
+tic tmux-256color.terminfo
 
 # install z
 curl https://raw.githubusercontent.com/rupa/z/master/z.sh -o /usr/local/bin/z.sh
@@ -19,7 +24,7 @@ ln -sfv `pwd`/nvim/init.vim ~/.config/nvim/init.vim
 
 # installing antigen
 
-curl -L git.io/antigen > ~/.antigen.zsh
+curl -L git.io/antigen > ~/antigen.zsh
 
 for f in .zshrc .tmux.conf
 do

@@ -1,7 +1,7 @@
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/quatrix/Library/Android/sdk/platform-tools:/Users/quatrix/workspace/misc/jira-flow"
 
 source /usr/local/bin/z.sh
-source ~/.antigen.zsh
+source ~/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -11,8 +11,6 @@ antigen bundle git
 antigen bundle pip
 antigen bundle nvm
 antigen bundle command-not-found
-
-# Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
