@@ -1,7 +1,7 @@
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/quatrix/Library/Android/sdk/platform-tools:/Users/quatrix/workspace/misc/jira-flow"
 
 source /usr/local/bin/z.sh
-source /Users/quatrix/antigen.zsh
+source ~/.antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh

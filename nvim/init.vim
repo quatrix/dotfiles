@@ -2,33 +2,32 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin( '~/.config/nvim/bundle')
+
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'airblade/vim-gitgutter.git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'lambdatoast/elm.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'sudar/vim-arduino-syntax'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'rakr/vim-one'
-Plugin 'mhinz/vim-grepper'
-Plugin 'rhysd/clever-f.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'Shougo/deoplete.nvim'
+Plug 'VundleVim/Vundle.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'flazz/vim-colorschemes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter.git'
+Plug 'tpope/vim-fugitive'
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
+Plug 'scrooloose/syntastic'
+Plug 'lambdatoast/elm.vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'sudar/vim-arduino-syntax'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'rakr/vim-one'
+Plug 'mhinz/vim-grepper'
+Plug 'rhysd/clever-f.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'Shougo/deoplete.nvim'
 
-
-call vundle#end()
+call plug#end()
 
 
 let g:deoplete#enable_at_startup = 1
