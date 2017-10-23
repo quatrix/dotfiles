@@ -8,6 +8,9 @@ brew install zsh
 brew install nvm
 brew install ag
 
+# nvm 
+mkdir ~/.nvm
+
 # install terminfo
 tic tmux-256color.terminfo
 

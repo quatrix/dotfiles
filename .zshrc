@@ -25,4 +25,6 @@ alias vi=nvim
 alias vim=nvim
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
+source $(brew --prefix nvm)/nvm.sh
+
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
