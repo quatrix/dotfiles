@@ -8,9 +8,9 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle git
-antigen bundle pip
-antigen bundle nvm
-antigen bundle command-not-found
+# antigen bundle pip
+# antigen bundle nvm
+# antigen bundle command-not-found
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
@@ -25,6 +25,6 @@ alias vi=nvim
 alias vim=nvim
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-source $(brew --prefix nvm)/nvm.sh
+source /usr/local/opt/nvm/nvm.sh
 
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

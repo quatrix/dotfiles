@@ -7,6 +7,7 @@ brew install neovim
 brew install zsh
 brew install nvm
 brew install ag
+brew install grip
 
 # nvm 
 mkdir ~/.nvm

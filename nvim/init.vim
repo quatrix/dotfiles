@@ -13,6 +13,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter.git'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'scrooloose/syntastic'
@@ -31,9 +32,6 @@ call plug#end()
 
 
 let g:deoplete#enable_at_startup = 1
-
-
-
 
 syntax on
 set tabstop=4
@@ -118,3 +116,8 @@ if executable('ag')
 
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" Ctrl+S to save
+noremap <C-S> :w<CR>
+vnoremap <C-S> <C-C>:w<CR>
+inoremap <C-S> <C-O>:w<CR>
