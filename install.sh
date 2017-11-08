@@ -8,6 +8,7 @@ brew install zsh
 brew install nvm
 brew install ag
 brew install grip
+brew install jq
 
 # nvm 
 mkdir ~/.nvm
