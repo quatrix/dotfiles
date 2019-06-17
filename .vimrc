@@ -1,29 +1,38 @@
+"-------------------------------------------------------------------------------
+" Vundle
+"-------------------------------------------------------------------------------
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-call plug#begin( '~/.config/nvim/bundle')
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
 Plug 'VundleVim/Vundle.vim'
-"Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
-Plug 'Shougo/vimproc.vim'
+"Plug 'Shougo/vimproc.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'rakr/vim-one'
 Plug 'mhinz/vim-grepper'
 Plug 'rhysd/clever-f.vim'
-Plug 'Shougo/deoplete.nvim'
+"Plug 'Shougo/deoplete.nvim'
 Plug 'w0rp/ale'
 
 
 " colors
-"Plug 'flazz/vim-colorschemes'
+Plug 'flazz/vim-colorschemes'
 Plug 'cocopon/iceberg.vim' " colorscheme
 
 
@@ -53,9 +62,15 @@ Plug 'sudar/vim-arduino-syntax'
 call plug#end()
 
 
-let g:deoplete#enable_at_startup = 1
-
+"let g:deoplete#enable_at_startup = 1
 syntax on
+filetype plugin indent on
+autocmd FileType yaml,ruby,javascript,typescript,tf setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType typescript setlocal completeopt+=menu,preview
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+
+
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -86,22 +101,17 @@ command Wq wq
 command W w
 command Q q
 
-" colors
-
-if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-
-if (has("termguicolors"))
-    set termguicolors
-endif
-
-
+" buffers
+set hidden
+nnoremap <C-O> :bnext<CR>
+nnoremap <C-I> :bprev<CR>
+nnoremap <C-W> :bdelete<CR>
+nnoremap <C-T> :vsp<CR>
 
 " colorz
 
-"let g:airline_theme='one'
-"let g:one_allow_italics = 1
+let g:airline_theme='one'
+let g:one_allow_italics = 1
 "set background=dark " for the dark version
 "colorscheme one
 "call one#highlight('Comment', '98c379', '', 'none')

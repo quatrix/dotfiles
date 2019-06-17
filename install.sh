@@ -9,6 +9,7 @@ brew install nvm
 brew install ag
 brew install grip
 brew install jq
+brew install zsh-syntax-highlighting
 
 # nvm 
 mkdir ~/.nvm
@@ -27,9 +28,8 @@ mkdir -p ~/.config/nvim/bundle
 
 ln -sfv `pwd`/nvim/init.vim ~/.config/nvim/init.vim
 
-# installing antigen
-
-curl -L git.io/antigen > ~/antigen.zsh
+# installing oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 for f in .zshrc .tmux.conf
 do
