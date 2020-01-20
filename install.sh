@@ -28,9 +28,11 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 # install antibody
 curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
 
-for f in .zshrc .tmux.conf
+
+for f in .zshrc .tmux.conf .zsh_plugins.txt
 do
     ln -sfv `pwd`/${f} ~
 done
 
+antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh                                                                                                                                                                                                                            [
 chsh -s /bin/zsh
