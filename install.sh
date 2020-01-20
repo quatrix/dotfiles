@@ -22,14 +22,11 @@ curl https://raw.githubusercontent.com/rupa/z/master/z.sh -o /usr/local/bin/z.sh
 
 # install nvim
 
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-pip3 install neovim
-mkdir -p ~/.config/nvim/bundle
-
-ln -sfv `pwd`/nvim/init.vim ~/.config/nvim/init.vim
-
 # installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# install antibody
+curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
 
 for f in .zshrc .tmux.conf
 do
