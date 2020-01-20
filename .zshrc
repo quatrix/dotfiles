@@ -35,21 +35,29 @@ alias ag='rg'
 # add support for ctrl+o to open selected file in VS Code
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code-insiders {})+abort'"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-export ANDROID_HOME=/Users/$USER/Library/Android/sdk
-export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/Users/quatrix/workspace/misc/jira-flow:/Applications/Postgres.app/Contents/Versions/latest/bin:/Applications/Xcode.app/Contents/Developer/usr/bin/
-
-
 
 export EDITOR='vim'
 export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/Applications/Julia-1.3.app/Contents/Resources/julia/bin:$HOME/miniconda3/bin/:$PATH"
-export ZSH="/Users/quatrix/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+
+if [ -e "/Users/quatrix/Library/Caches" ] 
+then
+    export ZSH="/Users/quatrix/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+else
+    export ZSH="${HOME}/.caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+fi
+
 export NVM_LAZY_LOAD=true
 
 
 # kaldi
-
 export PATH=$PATH:/kaldi/src/bin:/kaldi/src/chainbin:/kaldi/src/featbin:/kaldi/src/fgmmbin:/kaldi/src/fstbin:/kaldi/src/gmmbin:/kaldi/src/ivectorbin:/kaldi/src/kwsbin:/kaldi/src/latbin:/kaldi/src/lmbin:/kaldi/src/nnet2bin:/kaldi/src/nnet3bin:/kaldi/src/nnetbin:/kaldi/src/online2bin:/kaldi/src/onlinebin:/kaldi/src/sgmm2bin:/kaldi/src/sgmmbin:/kaldi/src/tfrnnlmbin:/kaldi/tools/openfst/bin:/kaldi/tools/irstlm/bin:/kaldi/tools/openfst-1.6.7/bin/
+
+
+# protobuf
+export PATH=$PATH:/opt/protobuf/bin
+
+
 
 
 # don't copy hidden mac files
@@ -61,15 +69,3 @@ source ~/.zsh_plugins.sh
 alias grep='rg'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-#zprof
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-#[[ -f /Users/quatrix/.nvm/versions/node/v8.15.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/quatrix/.nvm/versions/node/v8.15.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-#[[ -f /Users/quatrix/.nvm/versions/node/v8.15.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/quatrix/.nvm/versions/node/v8.15.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-#[[ -f /Users/quatrix/.nvm/versions/node/v8.15.1/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/quatrix/.nvm/versions/node/v8.15.1/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
