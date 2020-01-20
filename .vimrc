@@ -4,6 +4,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+
 " set the runtime path to include Vundle and initialize
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -17,7 +18,7 @@ call plug#begin('~/.vim/plugged')
 " let Vundle manage Vundle, required
 Plug 'VundleVim/Vundle.vim'
 Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'mattn/gist-vim'
@@ -29,7 +30,10 @@ Plug 'mhinz/vim-grepper'
 Plug 'rhysd/clever-f.vim'
 "Plug 'Shougo/deoplete.nvim'
 Plug 'w0rp/ale'
+Plug 'davidhalter/jedi-vim'
+Plug 'EinfachToll/DidYouMean'
 
+Plug 'junegunn/limelight.vim'
 
 " colors
 Plug 'flazz/vim-colorschemes'
@@ -38,6 +42,8 @@ Plug 'cocopon/iceberg.vim' " colorscheme
 
 " julia
 Plug 'JuliaEditorSupport/julia-vim'
+runtime macros/matchit.vim
+
 
 " js
 Plug 'pangloss/vim-javascript'
@@ -69,6 +75,10 @@ autocmd FileType yaml,ruby,javascript,typescript,tf setlocal tabstop=2 softtabst
 autocmd FileType typescript setlocal completeopt+=menu,preview
 autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_skip_empty_sections = 1
 
 
 set tabstop=4
@@ -108,10 +118,13 @@ nnoremap <C-I> :bprev<CR>
 nnoremap <C-W> :bdelete<CR>
 nnoremap <C-T> :vsp<CR>
 
+nnoremap <tab> :bnext<CR>
+nnoremap <S-tab> :bprev<CR>
+
 " colorz
 
-let g:airline_theme='one'
-let g:one_allow_italics = 1
+"let g:airline_theme='one'
+"let g:one_allow_italics = 1
 "set background=dark " for the dark version
 "colorscheme one
 "call one#highlight('Comment', '98c379', '', 'none')
@@ -166,10 +179,13 @@ let g:ale_typescript_tslint_config_path = expand("~/tslint.yml")
 " fzf
 let g:fzf_command_prefix = 'Fzf'
 
+" let didyoumean use fzf
+"let g:dym_use_fzf = 1
+
 " Search binaris folder
 nnoremap <Leader>a :call fzf#vim#ag(expand('~/bn'), '"^(?=.)"', 0)<CR>
 nnoremap <c-a> :let $FZF_DEFAULT_COMMAND='ag -p ~/bn/.ignore --hidden -g "" ~/bn' <bar> FzfFiles<CR>
-nnoremap <c-p> :FzfGFiles<CR>
+nnoremap <c-p> :FzfFiles<CR>
 
 " status line
 function! LinterStatus() abort
@@ -193,4 +209,5 @@ set statusline+=%#warningmsg#
 set statusline+=%{LinterStatus()}
 set statusline+=%*
 set statusline+=[line\ %l\/%L\ %c%V]
+set hlsearch
 
