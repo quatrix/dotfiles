@@ -57,7 +57,13 @@ export PATH=$PATH:/kaldi/src/bin:/kaldi/src/chainbin:/kaldi/src/featbin:/kaldi/s
 # protobuf
 export PATH=$PATH:/opt/protobuf/bin
 
+if [ -e "/usr/local/lib/tf" ]
+then
+    export LD_LIBRARY_PATH=/usr/local/lib/tf/:/opt/protobuf/lib/
+fi
 
+# julia
+export PATH=$PATH:/opt/julia/bin
 
 
 # don't copy hidden mac files
