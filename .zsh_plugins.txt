@@ -1,4 +1,4 @@
-lukechilds/zsh-nvm
+#lukechilds/zsh-nvm
 djui/alias-tips
 caarlos0/zsh-mkc
 zsh-users/zsh-completions
@@ -15,4 +15,3 @@ Tarrasch/zsh-bd
 
 
 aaronjamesyoung/aaron-zsh-theme
-#PsychoPatate/chill.zsh-theme
