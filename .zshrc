@@ -38,7 +38,7 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
 export EDITOR='vim'
 export NVM_DIR="$HOME/.nvm"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/Applications/Julia-1.3.app/Contents/Resources/julia/bin:$HOME/miniconda3/bin/:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/Applications/Julia-1.5.app/Contents/Resources/julia/bin:$HOME/miniconda3/bin/:$PATH"
 
 if [ -e "/Users/quatrix/Library/Caches" ] 
 then
@@ -75,3 +75,21 @@ source ~/.zsh_plugins.sh
 alias grep='rg'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#zprof
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/quatrix/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/quatrix/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/quatrix/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/quatrix/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

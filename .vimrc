@@ -81,6 +81,14 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_skip_empty_sections = 1
 
 
+" highlight current line
+set cursorline
+hi cursorline cterm=none term=none
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+highlight CursorLine guibg=#303000 ctermbg=234
+
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
