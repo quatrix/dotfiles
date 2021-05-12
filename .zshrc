@@ -1,7 +1,6 @@
-#zmodload zsh/zprof 
+zmodload zsh/zprof 
 
 
-alias activate='source .pyenv/bin/activate'
 alias gdc='git diff --cached'
 #alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gl="tig"
@@ -40,43 +39,27 @@ export EDITOR='vim'
 export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/Applications/Julia-1.5.app/Contents/Resources/julia/bin:$HOME/miniconda3/bin/:$PATH"
 
-if [ -e "/Users/quatrix/Library/Caches" ] 
-then
-    export ZSH="/Users/quatrix/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
-else
-    export ZSH="${HOME}/.caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
-fi
+#if [ -e "/Users/quatrix/Library/Caches" ] 
+#then
+#    export ZSH="/Users/quatrix/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+#else
+#    export ZSH="${HOME}/.caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+#fi
 
 export NVM_LAZY_LOAD=true
-
-
-# kaldi
-export PATH=$PATH:/kaldi/src/bin:/kaldi/src/chainbin:/kaldi/src/featbin:/kaldi/src/fgmmbin:/kaldi/src/fstbin:/kaldi/src/gmmbin:/kaldi/src/ivectorbin:/kaldi/src/kwsbin:/kaldi/src/latbin:/kaldi/src/lmbin:/kaldi/src/nnet2bin:/kaldi/src/nnet3bin:/kaldi/src/nnetbin:/kaldi/src/online2bin:/kaldi/src/onlinebin:/kaldi/src/sgmm2bin:/kaldi/src/sgmmbin:/kaldi/src/tfrnnlmbin:/kaldi/tools/openfst/bin:/kaldi/tools/irstlm/bin:/kaldi/tools/openfst-1.6.7/bin/
-
-
-# protobuf
-export PATH=$PATH:/opt/protobuf/bin
-
-if [ -e "/usr/local/lib/tf" ]
-then
-    export LD_LIBRARY_PATH=/usr/local/lib/tf/:/opt/protobuf/lib/
-fi
-
-# julia
-export PATH=$PATH:/opt/julia/bin
-
 
 # don't copy hidden mac files
 export COPYFILE_DISABLE=true
 
 setopt PROMPT_SUBST
-source ~/.zsh_plugins.sh
+#source ~/.zsh_plugins.sh
+#
 
 alias grep='rg'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#zprof
+zprof
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
