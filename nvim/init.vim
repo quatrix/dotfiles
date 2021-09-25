@@ -1,61 +1,88 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin('~/.vim/bundle')
 
-" set the runtime path to include Vundle and initialize
-call plug#begin( '~/.config/nvim/bundle')
-
-
-" let Vundle manage Vundle, required
 Plug 'VundleVim/Vundle.vim'
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
-Plug 'Shougo/vimproc.vim'
+"Plug 'Shougo/vimproc.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'rakr/vim-one'
 Plug 'mhinz/vim-grepper'
 Plug 'rhysd/clever-f.vim'
-Plug 'Shougo/deoplete.nvim'
-Plug 'w0rp/ale'
+"Plug 'Shougo/deoplete.nvim'
+"Plug 'davidhalter/jedi-vim'
+"Plug 'nvie/vim-flake8'
+
+Plug 'EinfachToll/DidYouMean'
+Plug 'edgedb/edgedb-vim'
+Plug 'junegunn/limelight.vim'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
+"Plug 'clojure-vim/clojure.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Olical/conjure', {'tag': 'v4.23.0'}
+Plug 'luochen1990/rainbow'
+Plug 'bhurlow/vim-parinfer'
+
+"Plug 'frazrepo/vim-rainbow'
+Plug 'calebsmith/vim-lambdify'
+
+"Plug 'folke/lsp-colors.nvim'
+
+"Plug 'guns/vim-sexp'
+"Plug 'tpope/vim-sexp-mappings-for-regular-people'
+"Plug 'tpope/vim-fireplace'
+"Plug 'guns/vim-clojure-static'
+"Plug 'guns/vim-clojure-highlight'
+"Plug 'dense-analysis/ale'
+
 
 
 " colors
-"Plug 'flazz/vim-colorschemes'
+Plug 'tjdevries/colorbuddy.vim'
+Plug 'bkegley/gloombuddy'
+Plug 'flazz/vim-colorschemes'
 Plug 'cocopon/iceberg.vim' " colorscheme
+Plug 'rockerBOO/boo-colorscheme-nvim', { 'branch': 'main' }
+Plug 'haishanh/night-owl.vim'
 
 
-" julia
-Plug 'JuliaEditorSupport/julia-vim'
+"Plug 'rafamadriz/neon'
 
-" js
-Plug 'pangloss/vim-javascript'
-
-" typescript
-Plug 'Quramy/tsuquyomi'
-Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/vim-js-pretty-template'
-Plug 'jason0x43/vim-js-indent'
-
-
-" fzf
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-
-" elm
-Plug 'lambdatoast/elm.vim'
-
-" arduino
-Plug 'sudar/vim-arduino-syntax'
 
 call plug#end()
 
-
-let g:deoplete#enable_at_startup = 1
-
+let g:mapleader = ","
+let maplocalleader=","
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 syntax on
+filetype plugin indent on
+autocmd FileType yaml,ruby,javascript,typescript,tf setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType typescript setlocal completeopt+=menu,preview
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+"autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd FileType clojure call rainbow#load()
+
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_skip_empty_sections = 1
+
+
+" highlight current line
+set cursorline
+hi cursorline cterm=none term=none
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+highlight CursorLine guibg=#303000 ctermbg=234
+
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -64,7 +91,6 @@ set expandtab
 set laststatus=2
 let g:bufferline_echo = 0
 
-let mapleader = "\<Space>"
 set noshowmode
 
 nnoremap <Leader>f :Unite -ignorecase -buffer-name=files -start-insert file_rec<CR>
@@ -86,16 +112,20 @@ command Wq wq
 command W w
 command Q q
 
-" colors
+" buffers
+set hidden
+nnoremap <C-O> :bnext<CR>
+nnoremap <C-I> :bprev<CR>
+nnoremap <C-W> :bdelete<CR>
+nnoremap <C-T> :vsp<CR>
 
-if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
+nnoremap <tab> :bnext<CR>
+nnoremap <S-tab> :bprev<CR>
 
-if (has("termguicolors"))
-    set termguicolors
-endif
-
+" clojure
+nnoremap <silent>§§ :ConjureEvalRootForm<CR>
+nnoremap <silent>±± :ConjureEvalCurrentForm<CR>
+"let g:ale_linters = {'clojure': ['clj-kondo']}
 
 
 " colorz
@@ -107,7 +137,10 @@ endif
 "call one#highlight('Comment', '98c379', '', 'none')
 "call one#highlight('Normal', 'abb2bf', '1e1e1e', 'none')
 
+set backspace=indent,eol,start
+
 colorscheme iceberg
+highlight Comment cterm=italic gui=italic
 
 
 set number
@@ -156,10 +189,13 @@ let g:ale_typescript_tslint_config_path = expand("~/tslint.yml")
 " fzf
 let g:fzf_command_prefix = 'Fzf'
 
+" let didyoumean use fzf
+"let g:dym_use_fzf = 1
+
 " Search binaris folder
 nnoremap <Leader>a :call fzf#vim#ag(expand('~/bn'), '"^(?=.)"', 0)<CR>
 nnoremap <c-a> :let $FZF_DEFAULT_COMMAND='ag -p ~/bn/.ignore --hidden -g "" ~/bn' <bar> FzfFiles<CR>
-nnoremap <c-p> :FzfGFiles<CR>
+nnoremap <c-p> :FzfFiles<CR>
 
 " status line
 function! LinterStatus() abort
@@ -183,4 +219,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{LinterStatus()}
 set statusline+=%*
 set statusline+=[line\ %l\/%L\ %c%V]
-
+set hlsearch
+set formatoptions+=r
+set relativenumber

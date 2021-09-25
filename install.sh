@@ -1,25 +1,30 @@
 #!/bin/bash
 
-# install brew stuff
-#brew install python3
-brew install tmux
-brew install vim
-brew install zsh
-#brew install nvm
-brew install ag
-brew install grip
-brew install jq
-brew install zsh-syntax-highlighting
+# install brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/quatrix/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# nvm 
-#mkdir ~/.nvm
+# omg, java
+brew uninstall --ignore-dependencies java
+brew install java11
+
+# install brew stuff
+brew install tmux neovim zsh ag grip jq zsh-syntax-highlighting \
+    bat antibody rg htop fzf fswatch tig postgres httpie ncdu \
+    prettyping fd exa duf curlie xh gtop gping hyperfine leiningen \
+    entr realpath 
+
+
+brew install clojure/tools/clojure
+brew install clojure-lsp/brew/clojure-lsp-native
+
 
 # install terminfo
 tic tmux-256color.terminfo
 
 # install z
 curl https://raw.githubusercontent.com/rupa/z/master/z.sh -o /usr/local/bin/z.sh
-
 
 # installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

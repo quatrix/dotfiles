@@ -1,15 +1,17 @@
-zmodload zsh/zprof 
+#zmodload zsh/zprof 
 
 
 alias gdc='git diff --cached'
 #alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gl="tig"
 alias ssh='TERM=xterm ssh'
-alias vi=vim
+alias vi=nvim
+alias vim=nvim
 alias cat=bat
 alias ping='prettyping --nolegend'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias ncdu='ncdu --color dark --exclude .git --exclude node_modules'
+alias nrepl='clj -R:nREPL -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"'
 
 # git aliases
 alias gc="git commit -v"
@@ -22,6 +24,7 @@ alias gdc="git diff --cached"
 alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
 alias ggpush='git push origin $(current_branch)'
 alias ggpull='git pull origin $(current_branch)'
+alias df='duf'
 
 alias c='code-insiders'
 alias :e='code-insiders'
@@ -37,7 +40,11 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
 export EDITOR='vim'
 export NVM_DIR="$HOME/.nvm"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/Applications/Julia-1.5.app/Contents/Resources/julia/bin:$HOME/miniconda3/bin/:$PATH"
+export PATH="/opt/homebrew/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/Applications/Julia-1.5.app/Contents/Resources/julia/bin:$HOME/miniconda3/bin/:$PATH"
+
+export LEIN_USE_BOOTCLASSPATH=no
+
+source "/Users/quatrix/Library/Application Support/edgedb/env"
 
 #if [ -e "/Users/quatrix/Library/Caches" ] 
 #then
@@ -52,14 +59,14 @@ export NVM_LAZY_LOAD=true
 export COPYFILE_DISABLE=true
 
 setopt PROMPT_SUBST
-#source ~/.zsh_plugins.sh
+source ~/.zsh_plugins.sh
 #
 
 alias grep='rg'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-zprof
+#zprof
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -76,3 +83,11 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+alias ls='exa'
+alias ll='exa -l'

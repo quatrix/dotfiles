@@ -13,5 +13,5 @@ robbyrussell/oh-my-zsh folder:plugins/common-aliases
 robbyrussell/oh-my-zsh path:plugins/z
 Tarrasch/zsh-bd
 
-
+iam4x/zsh-iterm-touchbar
 aaronjamesyoung/aaron-zsh-theme
